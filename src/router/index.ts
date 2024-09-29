@@ -13,10 +13,10 @@ const router = createRouter({
         title: '首页',
       },
     },
-    {
-      path: '/*',
-      redirect: '/',
-    },
+    // {
+    //   path: '/*',
+    //   redirect: '/',
+    // },
   ]
 })
 

@@ -1,3 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Alibaba PuHuiTi 字体 */
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src: url('./assets/fonts/Alibaba_PuHuiTi_2.0_35_Thin_35_Thin.ttf') format('truetype');
+  font-weight: 100; /* Thin */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src: url('./assets/fonts/Alibaba_PuHuiTi_2.0_45_Light_45_Light.ttf') format('truetype');
+  font-weight: 300; /* Light */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src: url('./assets/fonts/Alibaba_PuHuiTi_2.0_55_Regular_55_Regular.ttf') format('truetype');
+  font-weight: 400; /* Regular */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src: url('./assets/fonts/Alibaba_PuHuiTi_2.0_55_Regular_85_Bold.ttf') format('truetype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src: url('./assets/fonts/Alibaba_PuHuiTi_2.0_65_Medium_65_Medium.ttf') format('truetype');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'AlibabaPuHuiTi';
+  src: url('./assets/fonts/Alibaba_PuHuiTi_2.0_105_Heavy_105_Heavy.ttf') format('truetype');
+  font-weight: 900; /* Heavy */
+  font-style: normal;
+}
+
+/* AlimamaShuHeiTi 字体 */
+@font-face {
+  font-family: 'AlibabaMamaShuHeiTi';
+  src: url('./assets/fonts/AlimamaShuHeiTi-Bold.ttf') format('truetype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
