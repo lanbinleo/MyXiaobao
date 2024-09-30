@@ -13,7 +13,7 @@
       </nav>
     </aside>
 
-    <main class="mt-6 mb-6 bg-gray-100 w-full rounded-3xl p-6">
+    <main class="mt-6 mb-6 bg-gray-100 w-full rounded-3xl p-8 mr-6 overflow-y-auto">
         <router-view />
     </main>
   </div>
