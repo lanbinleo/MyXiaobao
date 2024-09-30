@@ -33,13 +33,14 @@ const router = createRouter({
 router.beforeEach((to, from, next)=>{
   // console.log(to, from)
   if (to.meta.title) {
+    from;
     document.title = `${to.meta.title} | My Xiaobao`;
   }
   next()
 })
 
 router.afterEach((to, from)=>{
-  // console.log(to, from)
+  console.log(to, from)
   console.log('afterEach')
 })
 

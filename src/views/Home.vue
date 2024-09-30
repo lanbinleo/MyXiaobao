@@ -14,16 +14,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+// import { ref } from 'vue';
 import Search from '../components/Search.vue';
 import Avatar from '../components/Avatar.vue';
 import HomeBanner from '../components/HomeBanner.vue';
 
-const message = ref('这是首页的消息');
+// const message = ref('这是首页的消息');
 
-function changeMessage() {
-    message.value = '消息已改变';
-}
+// function changeMessage() {
+//     message.value = '消息已改变';
+// }
 </script>
 
 <style scoped>
