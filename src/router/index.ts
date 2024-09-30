@@ -13,6 +13,15 @@ const router = createRouter({
         title: '首页',
       },
     },
+    // 登录
+    {
+      path: '/login',
+      name: 'login',
+      component: defineAsyncComponent(() => import(`../views/Login.vue`)),
+      meta: {
+        title: '登录',
+      },
+    },
     // {
     //   path: '/*',
     //   redirect: '/',
@@ -24,7 +33,7 @@ const router = createRouter({
 router.beforeEach((to, from, next)=>{
   // console.log(to, from)
   if (to.meta.title) {
-    document.title = `${to.meta.title}`;
+    document.title = `${to.meta.title} | My Xiaobao`;
   }
   next()
 })
