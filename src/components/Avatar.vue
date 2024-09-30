@@ -13,7 +13,8 @@
                 <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">个人中心</a></li>
                 <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">我的设置</a></li>
                 <hr>
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">退出登录</a></li>
+                <!-- <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">退出登录</a></li> -->
+                <li><router-link to="/login" class="block px-4 py-2 hover:bg-gray-100">退出登录</router-link></li>
             </ul>
         </div>
     </div>
