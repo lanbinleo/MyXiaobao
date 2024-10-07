@@ -6,10 +6,8 @@ import { createPinia } from 'pinia'
 import piniaPersist  from 'pinia-plugin-persistedstate'
 
 const app = createApp(App)
-const pinia = createPinia();
-
-pinia.use(piniaPersist);
-
 
 app.use(router)
+app.use(createPinia().use(piniaPersist))
+
 app.mount('#app')
