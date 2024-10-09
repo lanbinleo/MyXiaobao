@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/md5": "^2.3.5",
     "axios": "^1.7.7",
     "md5": "^2.3.0",
     "pinia": "^2.2.3",
