@@ -20,6 +20,59 @@
 </template>
 
 <script setup lang="ts">
+import { useToast } from 'vue-toastification';
+import { getUserInfo, login } from './api/auth';
+import { LoginData } from './api/schemas/auth';
+import { useAuthStore } from './store/auth';
+import { useInfoStore } from './store/userInfo';
+
+const infoStore = useInfoStore();
+const authStore = useAuthStore();
+const toast = useToast();
+
+const loginData: LoginData = {
+    isWeekPassword: 1,
+    languageType: 0,
+    name: "",
+    password: "",
+    timestamp: 0,
+};
+// 如果getUserInfo返回的是999901，则表示未登录
+function checkLogin(){
+  console.log("Checking Login status.....")
+  // 获取用户信息
+  getUserInfo().then(res => {
+    console.log(res);
+    // 如果res没有data
+    if (!res.data) {
+      tryAutoLogin();
+    } else {
+      infoStore.setInfo(res);
+    }
+  });
+}
+
+function tryAutoLogin(){
+  if(authStore.saveCredentials) {
+    loginData.name = authStore.loginName;
+    loginData.password = authStore.password;
+    loginData.timestamp = authStore.timestamp;
+    try {
+      login(loginData);
+
+    } catch (error) {
+      toast.warning('自动登录失败，可能是由于密码修改或网络原因，请重新登录。');
+      authStore.saveCredentials = false;
+      authStore.loginName = "";
+      authStore.password = "";
+      authStore.timestamp = 0;
+    }
+  }
+}
+
+checkLogin();
+
+
 </script>
 
 <style scoped>

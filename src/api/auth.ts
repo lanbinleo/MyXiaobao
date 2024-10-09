@@ -7,3 +7,10 @@ export function login(data: LoginData) {
         data
     })
 }
+
+export function getUserInfo() {
+    return request({
+        url: '/MemberShip/GetCurrentStudentInfo',
+        method: 'get'
+    })
+}

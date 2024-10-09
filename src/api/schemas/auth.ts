@@ -5,3 +5,9 @@ export interface LoginData {
   password: string;
   timestamp: number;
 }
+
+export interface CredentialData {
+  loginName: string;
+  password: string;
+  timestamp: number;
+}

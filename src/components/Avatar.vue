@@ -3,7 +3,7 @@
         <!-- Avatar -->
         <div class="avatar w-14 h-14 rounded-full bg-white flex items-center justify-center text-2xl cursor-pointer">
             <!-- Placeholder for Avatar Text or Image -->
-            霍
+            {{ firstLetter }}
         </div>
 
         <!-- Dropdown Menu -->
@@ -20,10 +20,37 @@
     </div>
 
 </template>
-<script lang="ts">
-export default {
-  name: 'Avatar',
+<script lang="ts" setup>
+import { getUserInfo } from '../api/auth';
+import { useInfoStore } from '../store/userInfo';
+
+const infoStore = useInfoStore();
+
+function setAvatarText() {
+  const name = infoStore.name;
+  const firstLetter = name.charAt(0).toUpperCase();
+  return firstLetter;
 }
+
+const firstLetter = setAvatarText();
+
+// export default {
+//   name: 'Avatar',
+//   setup() {
+//     const infoStore = useInfoStore();
+//     if (!infoStore.getted) {
+//       await getUserInfo().then(res => {
+//         infoStore.setInfo(res);
+//       });
+//     }
+
+//     let userFirstCharacter = infoStore.name.charAt(0);
+
+//     return {
+//        ufc: userFirstCharacter
+//     }
+//   },
+// }
 </script>
 <style scoped>
   * {
