@@ -1,0 +1,17 @@
+localhost:3000 {
+	# 代理前端
+	reverse_proxy /* {
+		to http://localhost:5173
+	}
+
+	# 代理 /api/* 请求到后端
+	reverse_proxy /api/* {
+		to https://tsinglanstudent.schoolis.cn
+		header_up Host tsinglanstudent.schoolis.cn
+		transport http {
+			tls
+		}
+		# 修改 Set-Cookie，添加 SameSite=None 和 Secure，但不修改 Domain
+		# header_down Set-Cookie (.*) "${1}; SameSite=None; Secure"
+	}
+}
