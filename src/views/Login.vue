@@ -75,7 +75,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const myAuthStore = useAuthStore();
+const authStore = useAuthStore();
 const toast = useToast();
 const infoStore = useInfoStore();
 
@@ -152,7 +152,8 @@ const handleLogin = async () => {
                 
 
                 // 保存 SessionId
-                myAuthStore.setSessionId(sessionId);
+                authStore.setSessionId(sessionId);
+                authStore.loggedIn = true;
 
                 // 创建 CredentialData 对象
                 const credentials: CredentialData = {
@@ -162,8 +163,13 @@ const handleLogin = async () => {
                 };
 
                 // 判断用户是否选择了“保持登录”
-                if (saveCredential) {
-                    myAuthStore.saveCredential(credentials); // 保存登录凭证
+                if (saveCredential.value) {
+                    authStore.saveCredential(credentials); // 保存登录凭证
+                } else {
+                    authStore.clearCredential();
+                    setTimeout(() => {
+                        toast.info("您没有选择保持登录状态，我们将不会保存您的登录凭证在本地，这可能会导致输入密码次数增加。我们建议您允许浏览器加密保存您的账户密码，以在会话过期后仍然可以快速登录我的校宝。")
+                    }, 1000);
                 }
 
                 router.push('/');

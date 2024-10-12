@@ -37,29 +37,34 @@ const loginData: LoginData = {
     password: "",
     timestamp: 0,
 };
-// 如果getUserInfo返回的是999901，则表示未登录
-function checkLogin(){
-  console.log("Checking Login status.....")
-  // 获取用户信息
+
+function fetchUserInfoStore() {
   getUserInfo().then(res => {
-    console.log(res);
-    // 如果res没有data
-    if (!res.data) {
-      tryAutoLogin();
-    } else {
-      infoStore.setInfo(res);
-    }
+    infoStore.setInfo(res);
   });
 }
 
-function tryAutoLogin(){
+function checkLogin(){
+  // 获取用户信息
+  getUserInfo().then(res => {
+    // 如果res没有data
+    if (!res) {
+      tryAutoLogin();
+    }
+    infoStore.setInfo(res);
+  });
+}
+
+async function tryAutoLogin(){
   if(authStore.saveCredentials) {
     loginData.name = authStore.loginName;
     loginData.password = authStore.password;
     loginData.timestamp = authStore.timestamp;
     try {
-      login(loginData);
-
+      await login(loginData);
+      fetchUserInfoStore();
+      authStore.loggedIn = true;
+      toast.success(`欢迎回来，${infoStore.name}！自动登录成功！`, { timeout: 2000 });
     } catch (error) {
       toast.warning('自动登录失败，可能是由于密码修改或网络原因，请重新登录。');
       authStore.saveCredentials = false;

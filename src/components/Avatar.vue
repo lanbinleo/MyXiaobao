@@ -21,36 +21,24 @@
 
 </template>
 <script lang="ts" setup>
-import { getUserInfo } from '../api/auth';
+import { ref } from 'vue';
 import { useInfoStore } from '../store/userInfo';
 
 const infoStore = useInfoStore();
 
+// 当监听到store中的数据变化时，重新计算firstLetter的值
+infoStore.$subscribe(() => {
+  firstLetter.value = setAvatarText();
+});
 function setAvatarText() {
   const name = infoStore.name;
   const firstLetter = name.charAt(0).toUpperCase();
   return firstLetter;
 }
 
-const firstLetter = setAvatarText();
+const firstLetter = ref('');
+firstLetter.value = setAvatarText();
 
-// export default {
-//   name: 'Avatar',
-//   setup() {
-//     const infoStore = useInfoStore();
-//     if (!infoStore.getted) {
-//       await getUserInfo().then(res => {
-//         infoStore.setInfo(res);
-//       });
-//     }
-
-//     let userFirstCharacter = infoStore.name.charAt(0);
-
-//     return {
-//        ufc: userFirstCharacter
-//     }
-//   },
-// }
 </script>
 <style scoped>
   * {

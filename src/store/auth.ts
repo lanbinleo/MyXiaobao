@@ -4,6 +4,7 @@ import { CredentialData } from '../api/schemas/auth';
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
+    loggedIn: false,
     sessionId: "",
     saveCredentials: false,
     loginName: "",
@@ -22,6 +23,13 @@ export const useAuthStore = defineStore('auth', {
       this.loginName = credentials.loginName;
       this.password = credentials.password;
       this.timestamp = credentials.timestamp;
+    },
+
+    clearCredential() {
+      this.saveCredentials = false;
+      this.loginName = "";
+      this.password = "";
+      this.timestamp = 0;
     },
     // 清除 sessionId
     clearSession() {
